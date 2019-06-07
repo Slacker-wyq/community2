@@ -1,6 +1,5 @@
 package com.slacker.community.provider;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.alibaba.fastjson.JSON;
 import com.slacker.community.dto.AccessTokenDTO;
 import com.slacker.community.dto.GithubUser;
@@ -38,7 +37,6 @@ public class GithubProvider {
         try {
             Response response = client.newCall(request).execute();
             String string=response.body().string();
-            System.out.println(string);
             GithubUser githubUser=JSON.parseObject(string,GithubUser.class);
             return githubUser;
         }catch (IOException e){
